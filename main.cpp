@@ -5,15 +5,18 @@
 using namespace std;
 
 int main(){
-	char ans;
+	string ans;
 	string q[20] = {"alive","big","cute","furry","flying","warm_blooded","reptile","swim","tail","hibernate","poisonous","extinct","pet","mammal","carnivor","legs","scales","food","fictional","4legs"};
-	for (int i = 1; i <=20; i++){
+	int i = 1;
+	while (i <=20){
 		cout << "question " << i << ": is it " << q[i-1] << "?" << endl;
 		cin >> ans;
-		if (ans == 'y'){
+		if (ans == "y" || ans == "yes" || ans == "indubitably"){
 			//add to animal traits
-		} else if (ans == 'n'){
+			i++;
+		} else if (ans == "n" || ans == "no" || ans == "nay"){
 			//add to animal traits
+			i++;
 		} else{
 			cout << "invalid response" << endl;
 		}
