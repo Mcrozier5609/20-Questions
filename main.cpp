@@ -1,0 +1,9 @@
+#include <iostream>
+#include <stdio.h>
+#include <string>
+
+using namespace std;
+
+int main(){
+	cout << "hello world" << endl;
+}
