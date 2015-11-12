@@ -1,7 +1,13 @@
 testcount = 0
 i = 0
+x = 1
 while i < 20:
-	#ask question
+	if x == 1:
+		print "y"
+		x = 0
+	else:
+		print "n"
+		x = 1
 	testcount += 1
 	i += 1
 output = "toaster"
