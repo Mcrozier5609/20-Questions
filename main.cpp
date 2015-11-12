@@ -13,7 +13,7 @@ int main(){
 	
 	while (i <=20){
 		cout << "question " << i << ": is it " << q[i-1] << "?" << endl;
-		cin >> ans;
+		if argv cin >> ans;
 		
 		if (ans == "y" || ans == "yes" || ans == "indubitably"){
 		
