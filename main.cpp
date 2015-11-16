@@ -75,12 +75,13 @@ int main(){
 	}
 	
 	x=0;
+	/*
 	cout <<"Attribute list is:";
 	while (x<20){
 		cout <<  attribute_list[x];
 		x++;
 	}
-	
+	*/
 	cout << endl;
 	
 	cout << "it's a..." << endl;
