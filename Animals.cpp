@@ -6,7 +6,7 @@
 
 struct Animal
 {
-	string name;
+	std::string name;
 	bool alive;       //1
 	bool big;
 	bool cute;
@@ -29,7 +29,7 @@ struct Animal
 	bool fourLegs;      //20
 	Animal() {};
 
-	Animal (string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
+	Animal (std::string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
 		bool warmBlooded_in,bool reptile_in,bool swim_in,bool tail_in,
 		bool hibernate_in,bool poison_in,bool fictional_in,bool extinct_in,
 		bool pet_in,bool mammal_in,bool carnivor_in,bool legs_in,

@@ -46,26 +46,26 @@ string topAnimal(int attribute_list[]){
 int main(){
 	string ans;
 	string q[20] = {"alive","big","cute","furry","flying","warm_blooded","reptile","swim","tail","hibernate","poisonous","extinct","pet","mammal","carnivor","legs","scales","food","fictional","4legs"};
-	int i = 1;
+	int question_number = 1;
 	int attribute_list[20];
-	int x = 0;
+	int attribute_pos = 0;
 	
-	while (i <=20){
-		cout << "question " << i << ": is it " << q[i-1] << "?" << endl;
+	while (question_number <=20){
+		cout << "Question " << question_number << ": is it " << q[question_number-1] << "?" << endl;
 		cin >> ans;
 		if (ans == "y" || ans == "yes" || ans == "indubitably"){
 		
 			//add to animal traits
-			attribute_list[x] = 1;
-			x++;
-			i++;
+			attribute_list[attribute_pos] = 1;  
+			attribute_pos++;
+			question_number++;
 			
 		} else if (ans == "n" || ans == "no" || ans == "nay"){
 		
 			//add to animal traits
-			attribute_list[x] = 0;
-			x++;
-			i++;
+			attribute_list[attribute_pos] = 0;
+			attribute_pos++;
+			question_number++;
 		
 		} else{
 		
@@ -73,9 +73,8 @@ int main(){
 		
 		}
 	}
-	
-	x=0;
 	/*
+	attribute_pos = 0;
 	cout <<"Attribute list is:";
 	while (x<20){
 		cout <<  attribute_list[x];
@@ -87,7 +86,7 @@ int main(){
 	cout << "it's a..." << endl;
 	
 	//Use Attribute list to find best animal match
-	string thing = topAnimal(attribute_list);	
+	string best_Animal = topAnimal(attribute_list);	
 	
-	cout << thing << endl;
+	cout << best_Animal << endl;
 }
