@@ -1,8 +1,47 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
-
+#include <fstream>
+#include <cstdlib>
+#include <unistd.h>
 using namespace std;
+
+int rankAnimal(string info, int attribute_list[]){
+	int rank = 0;
+	for (int q = 0; q < 20; q++){
+		//cout<<stoi(info.substr(2*q,1));
+		//cout<<endl;
+		if (stoi(info.substr(2*q,1))==attribute_list[q]){
+			rank++;
+		}
+	}
+	return rank;
+}
+
+string topAnimal(int attribute_list[]){
+	ifstream file;
+	file.open("Animals.txt");
+	string line;
+	int pos;
+	string animal = "thing";
+	int maxrank = 0;
+	int currank;
+	while (!file.eof()){
+		getline(file, line);
+		pos = line.find(",");
+		//cout<<line;
+		//cout<<endl;
+		//cout<<line.substr(pos+1,40);
+		//cout<<endl;
+		currank = rankAnimal(line.substr(pos+1,40),attribute_list);
+		if (currank>maxrank){
+			maxrank = currank;
+			animal = line.substr(0,pos);
+		}
+	}
+	file.close();
+	return animal;
+}
 
 int main(){
 	string ans;
@@ -13,8 +52,7 @@ int main(){
 	
 	while (i <=20){
 		cout << "question " << i << ": is it " << q[i-1] << "?" << endl;
-		if argv cin >> ans;
-		
+		cin >> ans;
 		if (ans == "y" || ans == "yes" || ans == "indubitably"){
 		
 			//add to animal traits
@@ -48,6 +86,7 @@ int main(){
 	cout << "it's a..." << endl;
 	
 	//Use Attribute list to find best animal match
+	string thing = topAnimal(attribute_list);	
 	
-	cout << "thing" << endl;
+	cout << thing << endl;
 }
