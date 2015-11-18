@@ -1,65 +1,111 @@
-#ifndef ANIMALS
-#define ANIMALS
+#include "Animals.h"
+
+using namespace std;
 
 #include <string>  //Needed for name of object
 
+Animal::Animal (){
+	//create things
+}
 
-struct Animal
+Animal::~Animal(){
+	//destroy things
+}
+
+void Animal::populate(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
+	bool warmBlooded_in,bool reptile_in,bool swim_in,bool tail_in,
+	bool hibernate_in,bool poison_in,bool fictional_in,bool extinct_in,
+	bool pet_in,bool mammal_in,bool carnivor_in,bool legs_in,
+	bool scales_in,bool food_in,bool fourLegs_in)
 {
-	std::string name;
-	bool alive;       //1
-	bool big;
-	bool cute;
-	bool furry;
-	bool fly;         //5
-	bool warmBlooded;
-	bool reptile;
-	bool swim;
-	bool tail;
-	bool hibernate;    //10
-	bool poison;
-	bool fictional;
-	bool extinct;
-	bool pet;
-	bool mammal;       //15
-	bool carnivor;
-	bool legs;
-	bool scales;
-	bool food;
-	bool fourLegs;      //20
-	Animal() {};
+	name = name_in;
+	alive = alive_in;
+	big = big_in;
+	cute = cute_in;
+	furry = furry_in;
+	fly = fly_in;
+	warmBlooded = warmBlooded_in;
+	reptile = reptile_in;
+	swim = swim_in;
+	tail = tail_in;
+	hibernate = hibernate_in;
+	poison = poison_in;
+	fictional = fictional_in;
+	extinct = extinct_in;
+	pet = pet_in;
+	mammal = mammal_in;
+	carnivor = carnivor_in;
+	legs = legs_in;
+	scales = scales_in;
+	food = food_in;
+	fourLegs = fourLegs_in;
+}
 
-	Animal (std::string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
-		bool warmBlooded_in,bool reptile_in,bool swim_in,bool tail_in,
-		bool hibernate_in,bool poison_in,bool fictional_in,bool extinct_in,
-		bool pet_in,bool mammal_in,bool carnivor_in,bool legs_in,
-		bool scales_in,bool food_in,bool fourLegs_in)
-	{
-		name = name_in;
-		alive = alive_in;
-		big = big_in;
-		cute = cute_in;
-		furry = furry_in;
-		fly = fly_in;
-		warmBlooded = warmBlooded_in;
-		reptile = reptile_in;
-		swim = swim_in;
-		tail = tail_in;
-		hibernate = hibernate_in;
-		poison = poison_in;
-		fictional = fictional_in;
-		extinct = extinct_in;
-		pet = pet_in;
-		mammal = mammal_in;
-		carnivor = carnivor_in;
-		legs = legs_in;
-		scales = scales_in;
-		food = food_in;
-		fourLegs = fourLegs_in;
+bool Animal::get_trait(int slot)
+{
+	bool ret = true;
+	switch (slot){
+		case 1:
+			ret = alive;
+			break;
+		case 2:
+			ret = big;
+			break;
+		case 3:
+			ret = cute;
+			break;
+		case 4:
+			ret = furry;
+			break;
+		case 5:
+			ret = fly;
+			break;
+		case 6:
+			ret = warmBlooded;
+			break;
+		case 7:
+			ret = reptile;
+			break;
+		case 8:
+			ret = swim;
+			break;
+		case 9:
+			ret = tail;
+			break;
+		case 10:
+			ret = hibernate;
+			break;
+		case 11:
+			ret = poison;
+			break;
+		case 12:
+			ret = fictional;
+			break;
+		case 13:
+			ret = extinct;
+			break;
+		case 14:
+			ret = pet;
+			break;
+		case 15:
+			ret = mammal;
+			break;
+		case 16:
+			ret = carnivor;
+			break;
+		case 17:
+			ret = legs;
+			break;
+		case 18:
+			ret = scales;
+			break;
+		case 19:
+			ret = food;
+			break;
+		case 20:
+			ret = fourLegs;
+			break;
+		//etc
 	}
-
-};
-
-
-
-#endif
+	return ret;
+}

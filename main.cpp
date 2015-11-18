@@ -4,6 +4,8 @@
 #include <fstream>
 #include <cstdlib>
 #include <unistd.h>
+#include "Animals.h"
+
 using namespace std;
 
 int rankAnimal(string info, string attribute_list[]){
@@ -15,6 +17,39 @@ int rankAnimal(string info, string attribute_list[]){
 		}
 	}
 	return rank;
+}
+
+bool tobool(string number){
+	bool ret = false;
+	if (number == "1"){
+		ret = true;
+	}
+	return ret;
+}
+
+Animal* archive(Animal Alist[]){
+	ifstream file;
+	file.open("Animals.txt");
+	string line;
+	string info;
+	int pos;
+	int count = 0;
+	getline(file, line);
+	while(!file.eof()){
+		pos = line.find(",");
+		info = line.substr(pos+1,40);
+		Alist[count].populate(line.substr(0,pos),tobool(info.substr(0,1)),tobool(info.substr(2,1)),
+				tobool(info.substr(4 ,1)),tobool(info.substr(6 ,1)),tobool(info.substr(8 ,1)),
+				tobool(info.substr(10,1)),tobool(info.substr(12,1)),tobool(info.substr(14,1)),
+				tobool(info.substr(16,1)),tobool(info.substr(18,1)),tobool(info.substr(20,1)),
+				tobool(info.substr(22,1)),tobool(info.substr(24,1)),tobool(info.substr(26,1)),
+				tobool(info.substr(28,1)),tobool(info.substr(30,1)),tobool(info.substr(32,1)),
+				tobool(info.substr(34,1)),tobool(info.substr(36,1)),tobool(info.substr(38,1)));
+		getline(file,line);
+		count++;
+	}
+	file.close();
+	return Alist;
 }
 
 string topAnimal(string attribute_list[]){
@@ -43,11 +78,19 @@ string topAnimal(string attribute_list[]){
 
 int main(){
 	string ans;
-	string q[20] = {"Is it alive","Is it big","Is it cute","Is it furry","Can it fly","Is it warm blooded","Is it a reptile","Can it swim","Does it have a tail","Does it hibernate","Is it poisonous","Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs","Does it have scales","Do people eat it","Is it fictional","Is it four legged"};
+	string q[20] = {"Is it alive","Is it big","Is it cute","Is it furry","Can it fly","Is it warm blooded",
+			"Is it a reptile","Can it swim","Does it have a tail","Does it hibernate","Is it poisonous",
+			"Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs",
+			"Does it have scales","Do people eat it","Is it fictional","Is it four legged"};
 	int question_number = 1;
+	int animal_count = 46;
 	string attribute_list[20];
 	int attribute_pos = 0;
-	
+	Animal Alist[animal_count];
+	cout<<"archiving"<<endl;
+	archive(Alist);
+	cout<<"archived"<<endl;
+
 	while (question_number <=20){
 		cout << "Question " << question_number << ": " << q[question_number-1] << "?" << endl;
 		cin >> ans;
@@ -71,16 +114,8 @@ int main(){
 		
 		}
 	}
-	/*
-	attribute_pos = 0;
-	cout <<"Attribute list is:";
-	while (x<20){
-		cout <<  attribute_list[x];
-		x++;
-	}
-	*/
-	cout << endl;
 	
+	cout << endl;
 	cout << "it's a..." << endl;
 	
 	//Use Attribute list to find best animal match
