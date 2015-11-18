@@ -1,7 +1,7 @@
 #Makefile for 20-Questions
 
 CC = g++
-CFLAGS = -Wall 
+CFLAGS = -std=c++11 -Wall 
 
 all: Animals.o main.o
 	$(CC) $(CFLAGS) -o 20Questions Animals.o main.o
