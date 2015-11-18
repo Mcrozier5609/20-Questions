@@ -6,6 +6,8 @@ using namespace std;
 
 Animal::Animal (){
 	//create things
+	rank = 0;
+	strike = 0;
 }
 
 Animal::~Animal(){
@@ -45,67 +47,91 @@ bool Animal::get_trait(int slot)
 {
 	bool ret = true;
 	switch (slot){
-		case 1:
+		case 0:
 			ret = alive;
 			break;
-		case 2:
+		case 1:
 			ret = big;
 			break;
-		case 3:
+		case 2:
 			ret = cute;
 			break;
-		case 4:
+		case 3:
 			ret = furry;
 			break;
-		case 5:
+		case 4:
 			ret = fly;
 			break;
-		case 6:
+		case 5:
 			ret = warmBlooded;
 			break;
-		case 7:
+		case 6:
 			ret = reptile;
 			break;
-		case 8:
+		case 7:
 			ret = swim;
 			break;
-		case 9:
+		case 8:
 			ret = tail;
 			break;
-		case 10:
+		case 9:
 			ret = hibernate;
 			break;
-		case 11:
+		case 10:
 			ret = poison;
 			break;
-		case 12:
+		case 11:
 			ret = fictional;
 			break;
-		case 13:
+		case 12:
 			ret = extinct;
 			break;
-		case 14:
+		case 13:
 			ret = pet;
 			break;
-		case 15:
+		case 14:
 			ret = mammal;
 			break;
-		case 16:
+		case 15:
 			ret = carnivor;
 			break;
-		case 17:
+		case 16:
 			ret = legs;
 			break;
-		case 18:
+		case 17:
 			ret = scales;
 			break;
-		case 19:
+		case 18:
 			ret = food;
 			break;
-		case 20:
+		case 19:
 			ret = fourLegs;
 			break;
 		//etc
 	}
 	return ret;
+}
+
+int Animal::get_rank(){
+	return rank;
+}
+
+void Animal::up_rank(){
+	rank++;
+}
+
+void Animal::up_strike(){
+	strike++;
+}
+
+bool Animal::strike_out(){
+	bool ret = false;
+	if (strike >= 3){
+		ret = true;
+	}
+	return ret;
+}
+
+std::string Animal::get_name(){
+	return name;
 }

@@ -8,17 +8,6 @@
 
 using namespace std;
 
-int rankAnimal(string info, string attribute_list[]){
-	int rank = 0;
-	for (int q = 0; q < 20; q++){
-		//cout<<info.substr(2*q,1)<<endl;
-		if (info.substr(2*q,1)==attribute_list[q]){
-			rank++;
-		}
-	}
-	return rank;
-}
-
 bool tobool(string number){
 	bool ret = false;
 	if (number == "1"){
@@ -52,28 +41,24 @@ Animal* archive(Animal Alist[]){
 	return Alist;
 }
 
-string topAnimal(string attribute_list[]){
-	ifstream file;
-	file.open("Animals.txt");
-	string line;
-	int pos;
-	string animal = "thing";
-	int maxrank = 0;
-	int currank;
-	getline(file, line);
-	while (!file.eof()){
-		pos = line.find(",");
-		//cout<<line<<endl;
-		//cout<<line.substr(pos+1,40)<<endl;
-		currank = rankAnimal(line.substr(pos+1,40),attribute_list);
-		if (currank>maxrank){
-			maxrank = currank;
-			animal = line.substr(0,pos);
+Animal* run_q(int qnum, Animal Alist[], int anum, bool qans){
+	for (int i = 0; i < anum; i++){
+		if (qans == Alist[i].get_trait(qnum)){
+			Alist[i].up_rank();
 		}
-		getline(file, line);
 	}
-	file.close();
-	return animal;
+}
+
+Animal get_max_rank(Animal Alist[], int anum){
+	int maxrank = Alist[0].get_rank();
+	Animal ret = Alist[0];
+	for (int i = 1; i < anum; i ++){
+		if (Alist[i].get_rank() > maxrank){
+			maxrank = Alist[i].get_rank();
+			ret = Alist[i];
+		}
+	}
+	return ret;
 }
 
 int main(){
@@ -82,30 +67,25 @@ int main(){
 			"Is it a reptile","Can it swim","Does it have a tail","Does it hibernate","Is it poisonous",
 			"Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs",
 			"Does it have scales","Do people eat it","Is it fictional","Is it four legged"};
-	int question_number = 1;
+	int question_number = 0;
 	int animal_count = 46;
-	string attribute_list[20];
-	int attribute_pos = 0;
 	Animal Alist[animal_count];
-	cout<<"archiving"<<endl;
 	archive(Alist);
 	cout<<"archived"<<endl;
 
-	while (question_number <=20){
-		cout << "Question " << question_number << ": " << q[question_number-1] << "?" << endl;
+	while (question_number <20){
+		cout << "Question " << (question_number+1) << ": " << q[question_number] << "?" << endl;
 		cin >> ans;
 		if (ans == "y" || ans == "yes" || ans == "indubitably"){
 		
 			//add to animal traits
-			attribute_list[attribute_pos] = '1';  
-			attribute_pos++;
+			run_q(question_number, Alist, animal_count, true);  
 			question_number++;
 			
 		} else if (ans == "n" || ans == "no" || ans == "nay"){
 		
 			//add to animal traits
-			attribute_list[attribute_pos] = '0';
-			attribute_pos++;
+			run_q(question_number, Alist, animal_count, false);
 			question_number++;
 		
 		} else{
@@ -119,7 +99,7 @@ int main(){
 	cout << "it's a..." << endl;
 	
 	//Use Attribute list to find best animal match
-	string best_Animal = topAnimal(attribute_list);	
-	
-	cout << best_Animal << endl;
+	Animal best_Animal = get_max_rank(Alist, animal_count);	
+	string guess = best_Animal.get_name();
+	cout << guess << endl;
 }

@@ -8,6 +8,8 @@ class Animal
 {
 	private:
 		std::string name;
+		int rank;
+		int strike;
 		bool alive;       //1
 		bool big;
 		bool cute;
@@ -34,6 +36,11 @@ class Animal
 		void populate(std::string,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,
 				   bool,bool,bool,bool,bool,bool,bool,bool,bool,bool);
 		bool get_trait(int);
+		int get_rank();
+		void up_rank();
+		void up_strike();
+		bool strike_out();
+		std::string get_name();
 };
 
 #endif
