@@ -63,6 +63,26 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 	return head;
 }
 
+int skip_q(int qnum, Animal * head){
+	Animal * temp;
+	bool same = true;
+	int skip = 0;
+	bool ans;
+	int totalqcount = 20;
+	while (same == true && (qnum+skip < totalqcount)){
+		skip++;
+		temp = head;
+		ans = temp->get_trait(qnum+skip);
+		while(temp != NULL){
+			if (temp->get_trait(qnum+skip)!=ans){
+				same = false;
+			}
+			temp = temp->next;
+		}
+	}
+	return skip;
+}
+
 Animal * get_max_rank(Animal * head){
 	Animal * temp = head;
 	int maxrank = temp->get_rank();
@@ -84,24 +104,27 @@ int main(){
 			"Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs",
 			"Does it have scales","Do people eat it","Is it fictional","Is it four legged"};
 	int question_number = 0;
+	int ext_q_num = 1; //number printed, everything internal uses 'question_number'
 
 	Animal * head = archive();
 	cout<<"archived"<<endl;
 
-	while (question_number <20){
-		cout << "Question " << (question_number+1) << ": " << q[question_number] << "?" << endl;
+	while (question_number < 20 && (head->next != NULL)){
+		cout << "Question " << ext_q_num << ": " << q[question_number] << "?" << endl;
 		cin >> ans;
 		if (ans == "y" || ans == "yes" || ans == "indubitably"){
 		
 			//add to animal traits
-			run_q(question_number, true, head);  
-			question_number++;
+			head = run_q(question_number, true, head);  
+			question_number += skip_q(question_number, head);
+			ext_q_num++;
 			
 		} else if (ans == "n" || ans == "no" || ans == "nay"){
 		
 			//add to animal traits
-			run_q(question_number, false, head);
-			question_number++;
+			head = run_q(question_number, false, head);
+			question_number += skip_q(question_number, head);
+			ext_q_num++;
 		
 		} else{
 		
@@ -111,7 +134,7 @@ int main(){
 	}
 	
 	cout << endl;
-	cout << "it's a..." << endl;
+	cout << "it's a ";
 	
 	//Use Attribute list to find best animal match
 	Animal * best_Animal = get_max_rank(head);	
