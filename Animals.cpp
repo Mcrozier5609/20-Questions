@@ -4,22 +4,20 @@ using namespace std;
 
 #include <string>  //Needed for name of object
 
-Animal::Animal (){
-	//create things
-	rank = 0;
-	strike = 0;
-}
-
 Animal::~Animal(){
 	//destroy things
 }
 
-void Animal::populate(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
+Animal::Animal(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
 	bool warmBlooded_in,bool reptile_in,bool swim_in,bool tail_in,
 	bool hibernate_in,bool poison_in,bool fictional_in,bool extinct_in,
 	bool pet_in,bool mammal_in,bool carnivor_in,bool legs_in,
-	bool scales_in,bool food_in,bool fourLegs_in)
+	bool scales_in,bool food_in,bool fourLegs_in,Animal*pointer_in)
 {
+	rank = 0;
+	strike = 0;
+	next = pointer_in;
+
 	name = name_in;
 	alive = alive_in;
 	big = big_in;

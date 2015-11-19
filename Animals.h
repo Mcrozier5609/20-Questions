@@ -31,16 +31,17 @@ class Animal
 		bool food;
 		bool fourLegs;      //20
 	public:
-		Animal();
 		~Animal();
-		void populate(std::string,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,
-				   bool,bool,bool,bool,bool,bool,bool,bool,bool,bool);
+		Animal(std::string,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,
+		    		   bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,Animal*);
 		bool get_trait(int);
 		int get_rank();
 		void up_rank();
 		void up_strike();
 		bool strike_out();
 		std::string get_name();
+
+		Animal * next;
 };
 
 #endif
