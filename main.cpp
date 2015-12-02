@@ -8,6 +8,7 @@
 
 using namespace std;
 
+//Used in function archive to read in #'s on file and convert to bool values
 bool tobool(string number){
 	bool ret = false;
 	if (number == "1"){
@@ -16,6 +17,9 @@ bool tobool(string number){
 	return ret;
 }
 
+//Reads in hardcoded file name.  Converts text file into Animal struct's reading until eof
+//Reads 1 as true any everything else as false (based upon function tobool) and constructs the animal
+//For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
 Animal* archive(){
 	ifstream file;
 	file.open("Animals.txt");
@@ -40,6 +44,8 @@ Animal* archive(){
 	return temp; //returns head of linked list
 }
 
+//Take anwser input and increase/decrease rank of all animals in linked list.   
+//Also strikes animals completely out of the list if they have too many strikes.
 Animal* run_q(int qnum, bool qans, Animal * head){
 	Animal * temp = head;
 	Animal * temptrail = NULL;
@@ -63,6 +69,7 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 	return head;
 }
 
+//Checks if a question is worth skipping????     -----------add what is happenning here
 int skip_q(int qnum, Animal * head){
 	Animal * temp;
 	bool same = true;
@@ -107,7 +114,7 @@ int main(){
 	int ext_q_num = 1; //number printed, everything internal uses 'question_number'
 
 	Animal * head = archive();
-	cout<<"archived"<<endl;
+	cout<<"Animals archived"<<endl;
 
 	while (question_number < 20 && (head->next != NULL)){
 		cout << "Question " << ext_q_num << ": " << q[question_number] << "?" << endl;
