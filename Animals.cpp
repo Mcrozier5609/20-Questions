@@ -12,7 +12,8 @@ Animal::Animal(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool f
 	bool warmBlooded_in,bool reptile_in,bool swim_in,bool tail_in,
 	bool hibernate_in,bool poison_in,bool fictional_in,bool extinct_in,
 	bool pet_in,bool mammal_in,bool carnivor_in,bool legs_in,
-	bool scales_in,bool food_in,bool fourLegs_in,Animal*pointer_in)
+	bool scales_in,bool food_in,bool fourLegs_in,bool whiskers_in, bool articLife_in, bool jungleLife_in, 
+	bool aquaticLife_in, bool packAnimal_in, Animal*pointer_in)
 {
 	rank = 0;
 	strike = 0;
@@ -39,6 +40,11 @@ Animal::Animal(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool f
 	scales = scales_in;
 	food = food_in;
 	fourLegs = fourLegs_in;
+	whiskers = whiskers_in;
+	articLife = articLife_in;
+	jungleLife = jungleLife_in;
+	aquaticLife = aquaticLife_in;
+	packAnimal = packAnimal_in;
 }
 
 bool Animal::get_trait(int slot)
@@ -104,6 +110,21 @@ bool Animal::get_trait(int slot)
 			break;
 		case 19:
 			ret = fourLegs;
+			break;
+		case 20:
+			ret = whiskers;
+			break;
+		case 21:
+			ret = articLife;
+			break;
+		case 22: 
+			ret = jungleLife;
+			break;
+		case 23: 
+			ret = aquaticLife;
+			break;
+		case 24: 
+			ret = packAnimal;
 			break;
 		//etc
 	}

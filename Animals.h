@@ -30,10 +30,15 @@ class Animal
 		bool scales;
 		bool food;
 		bool fourLegs;      //20
+		bool whiskers;
+		bool articLife;
+		bool jungleLife;
+		bool aquaticLife;
+		bool packAnimal;	//25
 	public:
 		~Animal();
 		Animal(std::string,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,
-		    		   bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,Animal*);
+		    		   bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,bool,Animal*);
 		bool get_trait(int);
 		int get_rank();
 		void up_rank();

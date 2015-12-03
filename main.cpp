@@ -30,14 +30,16 @@ Animal* archive(){
 	getline(file, line);
 	while(!file.eof()){
 		pos = line.find(",");
-		info = line.substr(pos+1,40);
+		info = line.substr(pos+1,50);
 		temp = new Animal(line.substr(0,pos),tobool(info.substr(0,1)),tobool(info.substr(2,1)),
 				tobool(info.substr(4 ,1)),tobool(info.substr(6 ,1)),tobool(info.substr(8 ,1)),
 				tobool(info.substr(10,1)),tobool(info.substr(12,1)),tobool(info.substr(14,1)),
 				tobool(info.substr(16,1)),tobool(info.substr(18,1)),tobool(info.substr(20,1)),
 				tobool(info.substr(22,1)),tobool(info.substr(24,1)),tobool(info.substr(26,1)),
 				tobool(info.substr(28,1)),tobool(info.substr(30,1)),tobool(info.substr(32,1)),
-				tobool(info.substr(34,1)),tobool(info.substr(36,1)),tobool(info.substr(38,1)), temp);
+				tobool(info.substr(34,1)),tobool(info.substr(36,1)),tobool(info.substr(38,1)),
+				tobool(info.substr(40,1)),tobool(info.substr(42,1)),tobool(info.substr(44,1)),
+				tobool(info.substr(46,1)),tobool(info.substr(48,1)), temp);
 		getline(file,line);
 	}
 	file.close();
@@ -75,7 +77,7 @@ int skip_q(int qnum, Animal * head){
 	bool same = true;
 	int skip = 0;
 	bool ans;
-	int totalqcount = 20;
+	int totalqcount = 25;
 	while (same == true && (qnum+skip < totalqcount)){
 		skip++;
 		temp = head;
@@ -106,17 +108,19 @@ Animal * get_max_rank(Animal * head){
 
 int main(){
 	string ans;
-	string q[20] = {"Is it alive","Is it big","Is it cute","Is it furry","Can it fly","Is it warm blooded",
+	string q[25] = {"Is it alive","Is it big","Is it cute","Is it furry","Can it fly","Is it warm blooded",
 			"Is it a reptile","Can it swim","Does it have a tail","Does it hibernate","Is it poisonous",
 			"Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs",
-			"Does it have scales","Do people eat it","Is it fictional","Is it four legged"};
+			"Does it have scales","Do people eat it","Is it fictional","Is it four legged",
+			"Does it have whiskers", "Does it commonly live in artic conditions", "Does it live in jungles/rainforrest",
+			"Does it live in aquatic conditions", "In the wild is it a pack/group animal"};
 	int question_number = 0;
 	int ext_q_num = 1; //number printed, everything internal uses 'question_number'
 
 	Animal * head = archive();
 	cout<<"Animals archived"<<endl;
 
-	while (question_number < 20 && (head->next != NULL)){
+	while (question_number < 25 && (head->next != NULL)){
 		cout << "Question " << ext_q_num << ": " << q[question_number] << "?" << endl;
 		cin >> ans;
 		if (ans == "y" || ans == "yes" || ans == "indubitably"){
