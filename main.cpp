@@ -106,6 +106,12 @@ Animal * get_max_rank(Animal * head){
 
 int main(){
 	string ans;
+	cout<<"Welcome to Animal 20-Questions!"<<endl;
+	cout<<"Would you like to play?"<<endl;
+	cout<<"Type 'yes', 'y', or 'indubitably' to comfirm."<<endl;
+	cout<<"Type 'no', 'n', 'nay' to quit."<<endl;
+	cin>>ans;
+	if (ans == "yes" || ans == "y" || ans == "indubitably"){
 	string q[20] = {"Is it alive","Is it big","Is it cute","Is it furry","Can it fly","Is it warm blooded",
 			"Is it a reptile","Can it swim","Does it have a tail","Does it hibernate","Is it poisonous",
 			"Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs",
@@ -147,4 +153,8 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
+	}
+	else if (ans == "no" || ans == "n" || ans == "nay"){
+	cout<<"Goodbye!"<<endl;
+	}
 }
