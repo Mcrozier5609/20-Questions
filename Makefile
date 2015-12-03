@@ -12,8 +12,8 @@ main.o: main.cpp
 Animals.o: Animals.cpp
 	$(CC) -c Animals.cpp 	
 
-test:
-	./20Questions
+test: main.cpp
+	./main
 
 clean:
 	rm -f *.o 20-Questions
