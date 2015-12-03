@@ -9,7 +9,6 @@
 using namespace std;
 
 /* returns a bool representative of an int*/
-//Used in function archive to read in #'s on file and convert to bool values
 bool tobool(string number){
 	bool ret = false;
 	if (number == "1"){
@@ -19,8 +18,6 @@ bool tobool(string number){
 }
 
 /* Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct */
-//Reads in hardcoded file name.  Converts text file into Animal struct's reading until eof
-//Reads 1 as true any everything else as false (based upon function tobool) and constructs the animal
 //For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
 Animal* archive(){
 	ifstream file;
@@ -60,8 +57,6 @@ void clear_archive(Animal * head){
 }
 
 /* Uses linked list of animals and answer to question to calculate ranks and narrow linked list */
-//Take anwser input and increase/decrease rank of all animals in linked list.   
-//Also strikes animals completely out of the list if they have too many strikes.
 Animal* run_q(int qnum, bool qans, Animal * head){
 	Animal * temp = head;
 	Animal * deltemp = NULL;
