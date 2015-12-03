@@ -8,6 +8,7 @@
 
 using namespace std;
 
+/* returns a bool representative of an int*/
 //Used in function archive to read in #'s on file and convert to bool values
 bool tobool(string number){
 	bool ret = false;
@@ -17,6 +18,7 @@ bool tobool(string number){
 	return ret;
 }
 
+/* Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct */
 //Reads in hardcoded file name.  Converts text file into Animal struct's reading until eof
 //Reads 1 as true any everything else as false (based upon function tobool) and constructs the animal
 //For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
@@ -46,10 +48,23 @@ Animal* archive(){
 	return temp; //returns head of linked list
 }
 
+/* Free memory at end of program */
+void clear_archive(Animal * head){
+	Animal * temp = head;
+	Animal * deltemp = NULL;
+	while (temp != NULL){
+		deltemp = temp;
+		temp = temp->next;
+		delete deltemp;
+	}
+}
+
+/* Uses linked list of animals and answer to question to calculate ranks and narrow linked list */
 //Take anwser input and increase/decrease rank of all animals in linked list.   
 //Also strikes animals completely out of the list if they have too many strikes.
 Animal* run_q(int qnum, bool qans, Animal * head){
 	Animal * temp = head;
+	Animal * deltemp = NULL;
 	Animal * temptrail = NULL;
 	while(temp != NULL){
 		if (qans == temp->get_trait(qnum)){
@@ -57,11 +72,14 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 		} else{
 			temp->up_strike();
 			if (temp->strike_out()){
-				// \/ remember to fix memory leaks here \/
 				if (temptrail != NULL){
+					deltemp = temptrail->next;
 					temptrail->next = temp->next;
+					delete deltemp;
 				} else{
+					deltemp = head;
 					head = temp->next;
+					delete deltemp;
 				}
 			}
 		}
@@ -71,6 +89,7 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 	return head;
 }
 
+/* Compares linked list of animals for next question(s) and returns int of upcoming unanimous answers */
 //Checks if a question is worth skipping????     -----------add what is happenning here
 int skip_q(int qnum, Animal * head){
 	Animal * temp;
@@ -92,6 +111,7 @@ int skip_q(int qnum, Animal * head){
 	return skip;
 }
 
+/* compares values of rank in linked list and returns Animal with highest rank */
 Animal * get_max_rank(Animal * head){
 	Animal * temp = head;
 	int maxrank = temp->get_rank();
@@ -114,6 +134,13 @@ int main(){
 			"Does it have scales","Do people eat it","Is it fictional","Is it four legged",
 			"Does it have whiskers", "Does it commonly live in artic conditions", "Does it live in jungles/rainforrest",
 			"Does it live in aquatic conditions", "In the wild is it a pack/group animal"};
+	cout<<"Welcome to Animal 20-Questions!"<<endl;
+	cout<<"Would you like to play?"<<endl;
+	cout<<"Type 'yes', 'y', or 'indubitably' to comfirm."<<endl;
+	cout<<"Type 'no', 'n', 'nay' to quit."<<endl;
+	cin>>ans;
+	if (ans == "yes" || ans == "y" || ans == "indubitably"){
+
 	int question_number = 0;
 	int ext_q_num = 1; //number printed, everything internal uses 'question_number'
 
@@ -151,4 +178,10 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
+	}
+	else if (ans == "no" || ans == "n" || ans == "nay"){
+	cout<<"Goodbye!"<<endl;
+	}
+
+	clear_archive(head);
 }
