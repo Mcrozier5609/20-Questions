@@ -8,6 +8,7 @@
 
 using namespace std;
 
+/* returns a bool representative of an int*/
 bool tobool(string number){
 	bool ret = false;
 	if (number == "1"){
@@ -16,6 +17,7 @@ bool tobool(string number){
 	return ret;
 }
 
+/* Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct */
 Animal* archive(){
 	ifstream file;
 	file.open("Animals.txt");
@@ -40,8 +42,21 @@ Animal* archive(){
 	return temp; //returns head of linked list
 }
 
+/* Free memory at end of program */
+void clear_archive(Animal * head){
+	Animal * temp = head;
+	Animal * deltemp = NULL;
+	while (temp != NULL){
+		deltemp = temp;
+		temp = temp->next;
+		delete deltemp;
+	}
+}
+
+/* Uses linked list of animals and answer to question to calculate ranks and narrow linked list */
 Animal* run_q(int qnum, bool qans, Animal * head){
 	Animal * temp = head;
+	Animal * deltemp = NULL;
 	Animal * temptrail = NULL;
 	while(temp != NULL){
 		if (qans == temp->get_trait(qnum)){
@@ -49,11 +64,14 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 		} else{
 			temp->up_strike();
 			if (temp->strike_out()){
-				// \/ remember to fix memory leaks here \/
 				if (temptrail != NULL){
+					deltemp = temptrail->next;
 					temptrail->next = temp->next;
+					delete deltemp;
 				} else{
+					deltemp = head;
 					head = temp->next;
+					delete deltemp;
 				}
 			}
 		}
@@ -63,6 +81,7 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 	return head;
 }
 
+/* Compares linked list of animals for next question(s) and returns int of upcoming unanimous answers */
 int skip_q(int qnum, Animal * head){
 	Animal * temp;
 	bool same = true;
@@ -83,6 +102,7 @@ int skip_q(int qnum, Animal * head){
 	return skip;
 }
 
+/* compares values of rank in linked list and returns Animal with highest rank */
 Animal * get_max_rank(Animal * head){
 	Animal * temp = head;
 	int maxrank = temp->get_rank();
@@ -140,4 +160,6 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
+
+	clear_archive(head);
 }
