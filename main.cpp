@@ -8,7 +8,11 @@
 
 using namespace std;
 
+<<<<<<< HEAD
+/* returns a bool representative of an int*/
+=======
 //Used in function archive to read in #'s on file and convert to bool values
+>>>>>>> 5beb4c9b885657a2db4b1ba51727f52201a1f9b5
 bool tobool(string number){
 	bool ret = false;
 	if (number == "1"){
@@ -17,9 +21,13 @@ bool tobool(string number){
 	return ret;
 }
 
+<<<<<<< HEAD
+/* Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct */
+=======
 //Reads in hardcoded file name.  Converts text file into Animal struct's reading until eof
 //Reads 1 as true any everything else as false (based upon function tobool) and constructs the animal
 //For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
+>>>>>>> 5beb4c9b885657a2db4b1ba51727f52201a1f9b5
 Animal* archive(){
 	ifstream file;
 	file.open("Animals.txt");
@@ -44,10 +52,26 @@ Animal* archive(){
 	return temp; //returns head of linked list
 }
 
+<<<<<<< HEAD
+/* Free memory at end of program */
+void clear_archive(Animal * head){
+	Animal * temp = head;
+	Animal * deltemp = NULL;
+	while (temp != NULL){
+		deltemp = temp;
+		temp = temp->next;
+		delete deltemp;
+	}
+}
+
+/* Uses linked list of animals and answer to question to calculate ranks and narrow linked list */
+=======
 //Take anwser input and increase/decrease rank of all animals in linked list.   
 //Also strikes animals completely out of the list if they have too many strikes.
+>>>>>>> 5beb4c9b885657a2db4b1ba51727f52201a1f9b5
 Animal* run_q(int qnum, bool qans, Animal * head){
 	Animal * temp = head;
+	Animal * deltemp = NULL;
 	Animal * temptrail = NULL;
 	while(temp != NULL){
 		if (qans == temp->get_trait(qnum)){
@@ -55,11 +79,14 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 		} else{
 			temp->up_strike();
 			if (temp->strike_out()){
-				// \/ remember to fix memory leaks here \/
 				if (temptrail != NULL){
+					deltemp = temptrail->next;
 					temptrail->next = temp->next;
+					delete deltemp;
 				} else{
+					deltemp = head;
 					head = temp->next;
+					delete deltemp;
 				}
 			}
 		}
@@ -69,7 +96,11 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 	return head;
 }
 
+<<<<<<< HEAD
+/* Compares linked list of animals for next question(s) and returns int of upcoming unanimous answers */
+=======
 //Checks if a question is worth skipping????     -----------add what is happenning here
+>>>>>>> 5beb4c9b885657a2db4b1ba51727f52201a1f9b5
 int skip_q(int qnum, Animal * head){
 	Animal * temp;
 	bool same = true;
@@ -90,6 +121,7 @@ int skip_q(int qnum, Animal * head){
 	return skip;
 }
 
+/* compares values of rank in linked list and returns Animal with highest rank */
 Animal * get_max_rank(Animal * head){
 	Animal * temp = head;
 	int maxrank = temp->get_rank();
@@ -153,8 +185,13 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
+<<<<<<< HEAD
 	}
 	else if (ans == "no" || ans == "n" || ans == "nay"){
 	cout<<"Goodbye!"<<endl;
 	}
+=======
+
+	clear_archive(head);
+>>>>>>> 97f5a5a6494fea3563d80618c0fd999dfaa88dd4
 }
