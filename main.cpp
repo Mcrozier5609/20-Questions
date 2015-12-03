@@ -123,23 +123,26 @@ Animal * get_max_rank(Animal * head){
 
 int main(){
 	string ans;
+	Animal * head;
+	bool play = true;
 	string q[25] = {"Is it alive","Is it big","Is it cute","Is it furry","Can it fly","Is it warm blooded",
 			"Is it a reptile","Can it swim","Does it have a tail","Does it hibernate","Is it poisonous",
 			"Is it extinct","Is it a pet","Is it a mammal","Is it a carnivor","Does it have legs",
 			"Does it have scales","Do people eat it","Is it fictional","Is it four legged",
 			"Does it have whiskers", "Does it commonly live in artic conditions", "Does it live in jungles/rainforrest",
 			"Does it live in aquatic conditions", "In the wild is it a pack/group animal"};
-
+	
 	cout<<"Welcome to Animal 20-Questions!"<<endl;
 	cout<<"Would you like to play?"<<endl;
 	cout<<"Type 'yes', 'y', or 'indubitably' to confirm."<<endl;
 	cout<<"Type 'no', 'n', 'nay' to quit."<<endl;
 	cin>>ans;
-
+	if (ans == "yes" || ans == "y" || ans == "indubitably"){
+	while (play == true){
 	int question_number = 0;
 	int ext_q_num = 1; //number printed, everything internal uses 'question_number'
 
-	Animal * head = archive();
+	head = archive();
 	cout<<"Animals archived"<<endl;
 
 	while (question_number < 25 && (head->next != NULL)){
@@ -173,7 +176,17 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
+	cout<<"Would you like to play again?"<<endl;
+	cin>>ans;
+	if (ans == "n" || ans == "no" || ans == "nay"){
+	play = false;
 	cout<<"Goodbye!"<<endl;
+	}
+	}
 
 	clear_archive(head);
+	}
+	else{
+	cout<<"Goodbye!"<<endl;
+	}
 }
