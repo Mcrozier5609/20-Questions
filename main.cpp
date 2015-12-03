@@ -67,11 +67,12 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 		} else{
 			temp->up_strike();
 			if (temp->strike_out()){
-				if (temptrail != NULL){
-					deltemp = temptrail->next;
+				if (temptrail != NULL){ //not the head
+					deltemp = temp;
 					temptrail->next = temp->next;
-					delete deltemp;
+					temp = temptrail;
 				} else{
+					cout << "head" << endl;
 					deltemp = head;
 					head = temp->next;
 					delete deltemp;
@@ -129,12 +130,12 @@ int main(){
 			"Does it have scales","Do people eat it","Is it fictional","Is it four legged",
 			"Does it have whiskers", "Does it commonly live in artic conditions", "Does it live in jungles/rainforrest",
 			"Does it live in aquatic conditions", "In the wild is it a pack/group animal"};
+
 	cout<<"Welcome to Animal 20-Questions!"<<endl;
 	cout<<"Would you like to play?"<<endl;
-	cout<<"Type 'yes', 'y', or 'indubitably' to comfirm."<<endl;
+	cout<<"Type 'yes', 'y', or 'indubitably' to confirm."<<endl;
 	cout<<"Type 'no', 'n', 'nay' to quit."<<endl;
 	cin>>ans;
-	if (ans == "yes" || ans == "y" || ans == "indubitably"){
 
 	int question_number = 0;
 	int ext_q_num = 1; //number printed, everything internal uses 'question_number'
@@ -173,10 +174,7 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
-	}
-	else if (ans == "no" || ans == "n" || ans == "nay"){
 	cout<<"Goodbye!"<<endl;
-	}
 
 	clear_archive(head);
 }
