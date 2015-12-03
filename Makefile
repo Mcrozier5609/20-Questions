@@ -12,11 +12,11 @@ main.o: main.cpp
 Animals.o: Animals.cpp
 	$(CC) -c Animals.cpp 	
 
-test:
+test: all
 	./20Questions
 
 clean:
-	rm -f *.o 20-Questions
+	rm -f 20Questions main.o Animals.o
 
 
 
