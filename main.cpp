@@ -72,7 +72,6 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 					temptrail->next = temp->next;
 					temp = temptrail;
 				} else{
-					cout << "head" << endl;
 					deltemp = head;
 					head = temp->next;
 					delete deltemp;
