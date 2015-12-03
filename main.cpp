@@ -173,13 +173,10 @@ int main(){
 	Animal * best_Animal = get_max_rank(head);	
 	string guess = best_Animal->get_name();
 	cout << guess << endl;
-<<<<<<< HEAD
 	}
 	else if (ans == "no" || ans == "n" || ans == "nay"){
 	cout<<"Goodbye!"<<endl;
 	}
-=======
 
 	clear_archive(head);
->>>>>>> 97f5a5a6494fea3563d80618c0fd999dfaa88dd4
 }
