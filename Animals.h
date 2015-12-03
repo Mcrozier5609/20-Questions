@@ -1,3 +1,5 @@
+//20-Questions 2015
+//Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
 #ifndef ANIMALS_H
 #define ANIMALS_H
 

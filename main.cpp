@@ -1,3 +1,5 @@
+//Animal 20-Questions 2015
+//Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -121,6 +123,7 @@ Animal * get_max_rank(Animal * head){
 	return ret;
 }
 
+/* Main initializes the animals and prompts the user to play, moves on to each new question, and asks the user if they would like to play again.*/
 int main(){
 	string ans;
 	Animal * head;
