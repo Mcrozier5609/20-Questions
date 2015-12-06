@@ -135,7 +135,12 @@ int main(){
 			"Does it have whiskers", "Does it commonly live in artic conditions", "Does it live in jungles/rainforrest",
 			"Does it live in aquatic conditions", "In the wild is it a pack/group animal"};
 	
-	cout<<"Welcome to Animal 20-Questions!"<<endl;
+	cout<<"=================================================================="<<endl;
+	cout<<"| Welcome to Animal 20-Questions!                                |"<<endl;
+	cout<<"|                                                                |"<<endl;
+	cout<<"| Jonny Schmidt, Michael Crozier, Scott Schubert, Sean Hansberry |"<<endl;
+	cout<<"=================================================================="<<endl;
+	cout<<""<<endl;
 	cout<<"Would you like to play?"<<endl;
 	cout<<"Type 'yes', 'y', or 'indubitably' to confirm."<<endl;
 	cout<<"Type 'no', 'n', 'nay' to quit."<<endl;
