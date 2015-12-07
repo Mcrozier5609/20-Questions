@@ -1,5 +1,5 @@
-//Animal 20-Questions 2015
-//Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
+//!Animal 20-Questions 2015
+//!Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
 #include "Animals.h"
 
 using namespace std;
