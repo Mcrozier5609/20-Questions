@@ -1,5 +1,7 @@
+//!
 //!Animal 20-Questions 2015
 //!Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
+//!
 #include "Animals.h"
 
 using namespace std;
@@ -10,6 +12,9 @@ Animal::~Animal(){
 	//destroy things
 }
 
+/**
+	Animal class to hold all the trait data in a boolean array
+*/
 Animal::Animal(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool furry_in,bool fly_in,
 	bool warmBlooded_in,bool reptile_in,bool swim_in,bool tail_in,
 	bool hibernate_in,bool poison_in,bool fictional_in,bool extinct_in,
@@ -49,6 +54,10 @@ Animal::Animal(std::string name_in,bool alive_in,bool big_in,bool cute_in,bool f
 	packAnimal = packAnimal_in;
 }
 
+/**
+	Returns a t/f value based upon the given trait is equal to 
+	the saved data point
+*/
 bool Animal::get_trait(int slot)
 {
 	bool ret = true;
@@ -133,18 +142,31 @@ bool Animal::get_trait(int slot)
 	return ret;
 }
 
+/**
+	Returns the rank of the animal
+*/
 int Animal::get_rank(){
 	return rank;
 }
 
+/**
+	Increases the rank of an animal by 1
+*/
 void Animal::up_rank(){
 	rank++;
 }
 
+/**
+	Adds 1 strike to the animal
+*/
 void Animal::up_strike(){
 	strike++;
 }
 
+/**
+	Checks if an animal has more than 3 strikes 
+	and returns true if they do
+*/
 bool Animal::strike_out(){
 	bool ret = false;
 	if (strike >= 3){
@@ -153,6 +175,9 @@ bool Animal::strike_out(){
 	return ret;
 }
 
+/**
+	Returns the name of the current animal
+*/
 std::string Animal::get_name(){
 	return name;
 }

@@ -1,5 +1,8 @@
+//
 //Animal 20-Questions 2015
 //Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
+// 
+
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -19,8 +22,10 @@ bool tobool(string number){
 	return ret;
 }
 
-/* Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct */
-//For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
+/*!
+  Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct 
+  For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
+ */
 Animal* archive(){
 	ifstream file;
 	file.open("Animals.txt");
