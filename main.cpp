@@ -1,7 +1,7 @@
-//
-//Animal 20-Questions 2015
-//Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
-// 
+//!
+//!Animal 20-Questions 2015
+//!Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry
+//!
 
 #include <iostream>
 #include <stdio.h>
@@ -13,7 +13,9 @@
 
 using namespace std;
 
-/* returns a bool representative of an int*/
+/**
+	returns a bool representative of an int
+*/
 bool tobool(string number){
 	bool ret = false;
 	if (number == "1"){
@@ -22,10 +24,10 @@ bool tobool(string number){
 	return ret;
 }
 
-/*!
-  Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct 
-  For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
- */
+/**
+	Uses Animals.txt and resources from Animals.cpp to set up linked list of animal struct 
+	For expansion with further traits, add to end of list to eliminate reordering of constructor and archive.
+*/
 Animal* archive(){
 	ifstream file;
 	file.open("Animals.txt");
@@ -49,10 +51,12 @@ Animal* archive(){
 		getline(file,line);
 	}
 	file.close();
-	return temp; //returns head of linked list
+	return temp; //returns head of the linked list
 }
 
-/* Free memory at end of program */
+/**
+	Free memory at end of program
+*/
 void clear_archive(Animal * head){
 	Animal * temp = head;
 	Animal * deltemp = NULL;
@@ -63,7 +67,9 @@ void clear_archive(Animal * head){
 	}
 }
 
-/* Uses linked list of animals and answer to question to calculate ranks and narrow linked list */
+/**
+	Uses linked list of animals and answer to question to calculate ranks and narrow linked list
+*/
 Animal* run_q(int qnum, bool qans, Animal * head){
 	Animal * temp = head;
 	Animal * deltemp = NULL;
@@ -91,8 +97,9 @@ Animal* run_q(int qnum, bool qans, Animal * head){
 	return head;
 }
 
-/* Compares linked list of animals for next question(s) and returns int of upcoming unanimous answers */
-//Checks if a question is worth skipping????     -----------add what is happenning here
+/**
+	Compares linked list of animals for next question(s) and returns int of upcoming unanimous answers
+*/
 int skip_q(int qnum, Animal * head){
 	Animal * temp;
 	bool same = true;
@@ -113,7 +120,9 @@ int skip_q(int qnum, Animal * head){
 	return skip;
 }
 
-/* compares values of rank in linked list and returns Animal with highest rank */
+/**
+	Compares values of rank in linked list and returns Animal with highest rank
+*/
 Animal * get_max_rank(Animal * head){
 	Animal * temp = head;
 	int maxrank = temp->get_rank();
@@ -128,7 +137,9 @@ Animal * get_max_rank(Animal * head){
 	return ret;
 }
 
-/* Main initializes the animals and prompts the user to play, moves on to each new question, and asks the user if they would like to play again.*/
+/**
+	Main initializes the animals and prompts the user to play, moves on to each new question, and asks the user if they would like to play again.
+*/
 int main(){
 	string ans;
 	Animal * head;
