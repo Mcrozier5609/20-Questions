@@ -138,7 +138,7 @@ int main(){
 	cout<<"=================================================================="<<endl;
 	cout<<"| Welcome to Animal 20-Questions!                                |"<<endl;
 	cout<<"|                                                                |"<<endl;
-	cout<<"| Jonny Schmidt, Michael Crozier, Scott Schubert, Sean Hansberry |"<<endl;
+	cout<<"| Jonny Schmitt, Michael Crozier, Scott Schubert, Sean Hansberry |"<<endl;
 	cout<<"=================================================================="<<endl;
 	cout<<""<<endl;
 	cout<<"Would you like to play?"<<endl;
